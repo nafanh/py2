@@ -1,0 +1,27 @@
+amino_acid = {'F':['UUU','UUC'],'L':['UUA','UUG'],'S':['UCU','UCC','UCA','UCG'],
+              'Y':['UAU','UAC'],'Stop':['UAA','UAG','UGA'],'C':['UGU','UGC'],'W':'UGG',
+              'L':['CUU','CUC','CUA','CUG'],'P':['CCU','CCC','CCA','CCG'],'H':['CAU','CAC'],
+              'Q':['CAA','CAG'],'R':['CGU','CGC','CGA','CGG'],'I':['AUU','AUC','AUA'],
+              'M':'AUG','T':['ACU','ACC','ACA','ACG'],'N':['AAU','AAC'],'K':['AAA','AAG'],
+              'S':['AGU','AGC'],'R':['AGA','AGG'],'V':['GUU','GUC','GUA','GUG'],
+              'A':['GCU','GCC','GCA','GCG'],'D':['GAU','GAC'],'E':['GAA','GAG'],
+              'G':['GGU','GGC','GGA','GGG']
+              }
+                   
+file = open('test.txt','r')
+rna = ''
+for line in file:
+    line = line.strip('\r\n')
+    rna += line
+
+
+rev_amino_acid_dict = {}
+p_string = ''
+for letter in amino_acid:
+    rev_amino_acid_dict[amino_acid[letter]] = letter
+for i in range(len(rna)-2):
+    codon = rna[i:i+3]
+    p_string += rev_amino_acid_dict[codon]
+
+print(p_string)
+    
