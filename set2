@@ -1,0 +1,84 @@
+soluble = open('soluble_sequences.txt','r')
+aa_dict = {}
+sum = 0
+for line in soluble:
+    line = line.strip('\r\n')
+    for aa in line:
+        if aa in aa_dict:
+            aa_dict[aa] += 1
+        else:
+            aa_dict[aa] = 1
+        sum += 1
+
+
+for amino in sorted(aa_dict):
+    freq = 100 * aa_dict[amino]/sum
+    print("Amino acid:", amino, "appears", aa_dict[amino], "times", "or",freq, "%")
+    
+
+Amino acid: A appears 17696 times or 5.355186626559257 %
+Amino acid: C appears 4002 times or 1.211090465613141 %
+Amino acid: D appears 19212 times or 5.813960526076878 %
+Amino acid: E appears 20934 times or 6.335074414579084 %
+Amino acid: F appears 15366 times or 4.650078984160801 %
+Amino acid: G appears 16931 times or 5.123681327660193 %
+Amino acid: H appears 7498 times or 2.2690545505165747 %
+Amino acid: I appears 19376 times or 5.863590420219945 %
+Amino acid: K appears 23623 times or 7.148823105741936 %
+Amino acid: L appears 29389 times or 8.8937375546988 %
+Amino acid: M appears 7022 times or 2.1250068089793794 %
+Amino acid: N appears 19625 times or 5.9389431253517975 %
+Amino acid: P appears 14305 times or 4.328997778759616 %
+Amino acid: Q appears 12249 times or 3.7068083741367728 %
+Amino acid: R appears 16508 times or 4.995672515327769 %
+Amino acid: S appears 31583 times or 9.5576886995152 %
+Amino acid: T appears 20283 times or 6.1380679445355675 %
+Amino acid: V appears 17366 times or 5.255321595661621 %
+Amino acid: W appears 4514 times or 1.366032574157351 %
+Amino acid: Y appears 12964 times or 3.923182607748316 %
+
+
+
+
+transmembrane:
+Amino acid: A appears 7434 times or 8.368888538652918 %
+Amino acid: C appears 2358 times or 2.654538495311216 %
+Amino acid: D appears 809 times or 0.9107386101385808 %
+Amino acid: E appears 847 times or 0.9535174323700594 %
+Amino acid: F appears 9526 times or 10.723975278343785 %
+Amino acid: G appears 6782 times or 7.634894009839129 %
+Amino acid: H appears 686 times or 0.7722703171261638 %
+Amino acid: I appears 11437 times or 12.87529973319524 %
+Amino acid: K appears 818 times or 0.9208704364565626 %
+Amino acid: L appears 14036 times or 15.801146022132412 %
+Amino acid: M appears 2810 times or 3.1633813281698546 %
+Amino acid: N appears 1859 times or 2.0927850139031174 %
+Amino acid: P appears 2562 times or 2.8841932251854687 %
+Amino acid: Q appears 1238 times or 1.3936889979623772 %
+Amino acid: R appears 528 times or 0.5944004773215954 %
+Amino acid: S appears 6037 times or 6.796203942406196 %
+Amino acid: T appears 4649 times or 5.233651172477456 %
+Amino acid: V appears 8727 times or 9.82449425300296 %
+Amino acid: W appears 2005 times or 2.2571457519503766 %
+Amino acid: Y appears 3681 times or 4.143916964054532 %
+
+
+
+
+state = open("state_sequences.txt","r")
+s_freq = 0
+t_freq = 0
+temp_string = ''
+first = state.readline().strip('\r\n')
+prev_len = len(first)
+current_len = 0
+for line in state:
+    line = line.strip('\r\n')
+    if len(line) < prev_len:
+        if line[0] == 'S':
+            s_freq += 1
+        elif line[0] == 'T':
+            t_freq += 1
+
+print(s_freq)
+print(t_freq)
